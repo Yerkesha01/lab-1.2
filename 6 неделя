@@ -1,0 +1,94 @@
+# Задача 1: Получение ключей с True значениями
+# Эта функция возвращает список ключей из словаря, где соответствующее значение равно True.
+def get_key(input_dict):
+    return [key for key, value in input_dict.items() if value]
+
+# Задача 2: Получение уникальных элементов
+# Эта функция возвращает список уникальных элементов из входного списка (встречаются <= 1 раза).
+def get_unique_elements(input_list):
+    return [element for element in input_list if input_list.count(element) <= 1]
+
+# Задача 3: Форматирование даты
+# Эта функция преобразует дату из формата "ГГГГ.ММ.ДД" в формат "ДД.ММ.ГГГГ".
+def get_date_in_format(input_date):
+    parsed_date = datetime.strptime(input_date, "%Y.%m.%d")
+    formatted_date = parsed_date.strftime("%d.%m.%Y")
+    return formatted_date
+
+# Задача 4: Элементы с не более чем двумя вхождениями
+# Эта функция возвращает список элементов, встречающихся не более двух раз во входном списке.
+def get_elements_with_no_more_than_two_occurrences(input_list):
+    return [element for element in set(input_list) if input_list.count(element) <= 2]
+
+# Задача 5: Слова из строки
+# Эта функция принимает строку на вводе, разбивает ее на слова и возвращает список слов.
+def get_words_from_string(input_string):
+    return input_string.split()
+
+# Задача 6: Уникальные элементы с подсчетом
+# Эта функция возвращает словарь с уникальными элементами в качестве ключей и их количеством во входном списке.
+def get_unique_elements_with_count(input_list):
+    unique_elements = set(input_list)
+    count_dict = {element: input_list.count(element) for element in unique_elements}
+    return count_dict
+
+# Задача 7: Получение простых чисел до n
+# Эта функция генерирует список простых чисел до заданного числа 'n'.
+def get_prime_numbers(n):
+    primes = []
+    for num in range(2, n + 1):
+        is_prime = True
+        for i in range(2, int(num ** 0.5) + 1):
+            if num % i == 0:
+                is_prime = False
+                break
+        if is_prime:
+            primes.append(num)
+    return primes
+
+# Задача 8: Получение простых чисел из списка
+# Эта функция фильтрует простые числа из заданного списка.
+def is_prime(num):
+    if num < 2:
+        return False
+    for i in range(2, int(num ** 0.5) + 1):
+        if num % i == 0:
+            return False
+    return True
+
+def get_prime_numbers_in_list(input_list):
+    return [num for num in input_list if is_prime(num)]
+
+# Задача 9: Разница между датами
+# Эта функция вычисляет абсолютную разницу в днях между двумя датами.
+def get_difference_between_dates(date1, date2):
+    date_format = "%Y.%m.%d"
+    datetime1 = datetime.strptime(date1, date_format)
+    datetime2 = datetime.strptime(date2, date_format)
+    difference = abs((datetime2 - datetime1).days)
+    return difference
+
+# Задача 10: Десятичное число из двоичной строки
+# Эта функция преобразует двоичную строку в десятичное число.
+def get_decimal_number_from_binary_string(binary_string):
+    decimal_number = int(binary_string, 2)
+    return decimal_number
+
+# Задача 11: Совершенные квадраты
+# Эта функция возвращает список совершенных квадратов из заданного списка.
+def is_perfect_square(num):
+    return math.isqrt(num) ** 2 == num
+
+def get_perfect_squares(input_list):
+    return [num for num in input_list if is_perfect_square(num)]
+
+# Задача 12: Сортировка по цене
+# Эта функция сортирует список словарей (покупок) по ключу 'price'.
+def sort_by_price(shopping_list):
+    return sorted(shopping_list, key=lambda item: item['price'])
+
+# Задача 13: Слова, начинающиеся с гласной
+# Эта функция фильтрует слова из списка, начинающиеся с гласной буквы.
+def get_words_starting_with_vowel(words):
+    vowels = set("aeiouAEIOU")
+    return [word for word in words if word[0] in vowels]
